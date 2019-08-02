@@ -1,6 +1,6 @@
 ﻿namespace ApiForm.Models
 {
-    enum ContactCategory
+    public enum ContactCategory
     {
         Friends,
         Collegues,
