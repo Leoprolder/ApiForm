@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+        <script>
+            // function sendReq() {
+            //     var xhr = new XMLHttpRequest();
+            //     xhr.open('GET', 'localhost:44386/api/values');
+            //     var res = xhr.send();
+            //     console.log(res);
+            // }
+
+            // function trySendOld() {
+            //     var x = new XMLHttpRequest();
+            //     x.open('GET', "http://localhost:44386/api/values");
+            //     x.onload = function() {
+            //         alert("load: " + x.responseText);
+            //     }
+            //     x.onreadystatechange = function() {
+            //         alert("readystatechange: " + x);
+            //         console.log("readystatechange : ");
+            //         console.log(x);
+            //         //var response = JSON.parse(x.responseText); 
+            //         console.log(x.responseText)
+            //     }
+            //     x.send(null);
+            // }
+
+            function trySend() {
+                $.ajax({
+                    url: 'http://localhost:44386/api/values',
+                    type: 'GET',
+                    dataType: 'json',
+                    accepts: 'text/json',
+                    success: function (data) {
+                        console.log("data:");
+                        console.log(data);
+                        //WriteResponse(data);
+                    },
+                    error: function (x, y, z) {
+                        console.log(x)
+                        console.log(y)
+                        console.log(z)
+                        //alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            }
+
+            function SendItems() {
+ 
+                $.ajax({
+                    url: 'http://localhost:44386/api/values/setdata',
+                    type: 'GET',
+                    data: {
+                        books: [{
+                            key: "id12345667889", value: {
+                                name: "Война и мир",
+                                author: "Толстой"
+                            }
+                        },{
+                            key: "id12345667467", value: {
+                                name: "Отцы и дети",
+                                author: "Тургенев"
+                            }
+                        }]
+                    },
+                    success: function (data) {
+                        
+                        alert("Данные отправлены");
+                    },
+                    error: function(data) {
+                        alert("error")
+                    }
+                });
+            }
+        </script>
+    </head>
+
+    <body>
+        <button onclick="sendReq()">send request</button>
+        <button onclick="SendItems()">try send request</button>
+    </body>
+</html>

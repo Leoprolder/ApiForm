@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApiForm.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -19,6 +20,24 @@ namespace ApiForm
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "setdata",
+                routeTemplate: "api/{controller}/{data}",
+                defaults: 
+                new {
+                    data = new Data
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            { "Hello" , "World" },
+                            {"Number is", 123 }
+                        }
+                    )
+                }
+            );
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
