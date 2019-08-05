@@ -7,7 +7,9 @@ namespace ApiForm.Models
 {
     public class Data
     {
-        //public int Id { get; set; }
+        internal string id;
+
+        public int Id { get; set; }
         public Dictionary<String, Object> Fields { get; set; }
 
         public Data()

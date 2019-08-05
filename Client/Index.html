@@ -52,18 +52,17 @@
                 $.ajax({
                     url: 'http://localhost:44386/api/values/setdata',
                     type: 'GET',
+                    ContentTYpe: "text/json",
                     data: {
-                        books: [{
-                            key: "id12345667889", value: {
-                                name: "Война и мир",
-                                author: "Толстой"
+                        inputData: 
+                        {
+                            Id: 1,
+                            Fields: {
+                                samplestring1: {"Home" : "world"},
+                                samplestring3: {"Ass" : "burger"}
                             }
-                        },{
-                            key: "id12345667467", value: {
-                                name: "Отцы и дети",
-                                author: "Тургенев"
-                            }
-                        }]
+                        }
+                        
                     },
                     success: function (data) {
                         
@@ -74,11 +73,27 @@
                     }
                 });
             }
+
+            function GetAllBooks() {
+                $.ajax({
+                    url: '/api/values',
+                    type: 'GET',
+                    dataType: "text",
+                    accepts: {
+                        text: "application/x-data"
+                    },
+                    success: function (data) {
+
+                        WriteResponse(data);
+                    }
+                });
+            }
         </script>
     </head>
 
     <body>
         <button onclick="sendReq()">send request</button>
         <button onclick="SendItems()">try send request</button>
+        <button onclick="GetAllBooks()">get all books...</button>
     </body>
 </html>

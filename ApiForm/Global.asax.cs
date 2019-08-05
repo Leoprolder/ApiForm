@@ -15,7 +15,6 @@ namespace ApiForm
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer(new ContactDbInitializer());
             Database.SetInitializer(new DataDbInitializer());
 
             AreaRegistration.RegisterAllAreas();
@@ -23,6 +22,9 @@ namespace ApiForm
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
         }
     }
 }
