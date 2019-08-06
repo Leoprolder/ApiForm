@@ -88,11 +88,36 @@
                     }
                 });
             }
+
+            function SendPost() {
+                
+                $.ajax({
+                    url: 'http://localhost:44386/api/values/',
+                    type: 'POST',
+                    data: {
+                        data: [{
+                            key: 12345667889, value: {
+                                name: "Война и мир",
+                                author: "Толстой"
+                            }
+                        },{
+                            key: 12345667467, value: {
+                                name: "Отцы и дети",
+                                author: "Тургенев"
+                            }
+                        }]
+                    },
+                    success: function (data) {
+                        
+                        alert("Данные отправлены");
+                    } 
+                });
+            }
         </script>
     </head>
 
     <body>
-        <button onclick="sendReq()">send request</button>
+        <button onclick="SendPost()">send request</button>
         <button onclick="SendItems()">try send request</button>
         <button onclick="GetAllBooks()">get all books...</button>
     </body>
