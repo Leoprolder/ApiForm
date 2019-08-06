@@ -24,14 +24,48 @@ namespace ApiForm.Controllers
             //modelContext.Model = new Data();
             //binder.BindModel(this.ActionContext, modelContext);
             //return db.DataTable;
-            IEnumerable<Data> data = new List<Data>
-            {
-                new Data {Id=1, Fields={ {"Война и мир", 1863 } } },
-                new Data {Id=2, Fields={ {"Отцы и дети", 1862 } } },
-                new Data {Id=3, Fields= { {"Евгений Онегин", 1831 } } },
-            };
+
+            //IEnumerable<Data> data = new List<Data>
+            //{
+            //    new Data {Id=1, Fields={ {"Война и мир", 1863 } } },
+            //    new Data {Id=2, Fields={ {"Отцы и дети", 1862 } } },
+            //    new Data {Id=3, Fields= { {"Евгений Онегин", 1831 } } },
+            //};
+
+            //foreach (var d in data)
+            //{
+            //    db.DataTable.Add(d);
+            //}
+
+            //db.SaveChanges();
+
             //IEnumerable<Data> data = db.DataTable;
-            return data;
+            //List<Data> output = new List<Data>();
+
+            //foreach(Data d in data)
+            //{
+            //    Data buffer = new Data();
+            //    buffer.Id = d.Id;
+            //    foreach(var k in d.Fields)
+            //    {
+            //        buffer.Fields.Add(k.Key, k.Value);
+            //    }
+            //    output.Add(buffer);
+            //}
+
+            //List<Data> data = new List<Data>();
+            //var person = new Data();
+            //person.Fields.Add("Name", "Hugo Weaving");
+            //person.Fields.Add("Gender", "male");
+            //person.Fields.Add("Birthday", new DateTime(1960, 4, 4));
+            //data.Add(person);
+
+            //var plant = new Data();
+            //plant.Fields.Add("Type", "Flower");
+            //plant.Fields.Add("IsTree", false);
+            //data.Add(plant);
+
+            return db.DataTable;
         }
 
         public Data GetData(int id)
